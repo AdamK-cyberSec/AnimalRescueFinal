@@ -3,9 +3,6 @@
  */
 package AnimalRescueFinal;
 
-/**
- * 
- */
 public class Project02AnimalRescue
 {
 
@@ -119,4 +116,71 @@ class RescueCenter
 		return animalCount;
 	}
 
+	void addAnimal(Animal newAnimal)
+	{
+		if (animalCount < maxAnimals)
+		{
+			animals[animalCount] = newAnimal;
+			animalCount++;
+
+			System.out.println("Successfully added " + newAnimal.getName() + " of species " + newAnimal.getSpecies());
+		} else
+		{
+			System.out.println("No space at the shelter!");
+		}
+	}
+
+	void displayAnimalResults()
+	{
+		for (int index = 0; index < animalCount; index++)
+		{
+			System.out.println("Name: " + animals[index].getName());
+			System.out.println("Species: " + animals[index].getSpecies());
+			System.out.printf("Weight: %.2f lbs%n", animals[index].getWeight());
+			System.out.println("Weight Category: " + animals[index].weightCategoryLoop());
+			System.out.printf("Daily Food Amount: %.2f cups%n", animals[index].getDailyFood());
+			System.out.printf("Weekly Food Amount: %.2f cups%n", animals[index].weeklyFoodCalc());
+			System.out.printf("%n----------------------------------------%n");
+
+		}
+	}
+
+	double calculateTotalWeeklyFood()
+	{
+		double weeklyTotal = 0;
+		for (int index = 0; index < animals.length; index++)
+		{
+			weeklyTotal = weeklyTotal + animals[index].weeklyFoodCalc();
+		}
+
+		return weeklyTotal;
+	}
+
+	double calculateAverageDailyFood()
+	{
+		double average = 0;
+		double sum = 0;
+		for (int index = 0; index < animals.length; index++)
+		{
+			sum = sum + animals[index].getDailyFood();
+		}
+		average = sum / animals.length;
+		return average;
+	}
+
+	void displayAnimalsAtOrAboveAverageDailyFood(double average)
+	{
+		for (int index = 0; index < animals.length; index++)
+		{
+			if (animals[index].getDailyFood() >= average)
+			{
+				System.out.printf("%s: %.2f cups. \n", animals[index].getName(), animals[index].getDailyFood());
+			}
+
+			else
+			{
+
+			}
+		}
+	}
 }
