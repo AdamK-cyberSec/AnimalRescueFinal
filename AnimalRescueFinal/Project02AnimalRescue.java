@@ -94,3 +94,29 @@ class Animal
 
 	}
 }
+
+class RescueCenter
+{
+
+	private String rescueName;
+	private Animal[] animals;
+	private int animalCount;
+	private int maxAnimals;
+
+	RescueCenter(String rescueName, int maxAnimals)
+	{
+		this.rescueName = rescueName;
+		this.maxAnimals = maxAnimals;
+	}
+
+	String getRescueName()
+	{
+		return rescueName;
+	}
+
+	int getAnimalCount()
+	{
+		return animalCount;
+	}
+
+}
